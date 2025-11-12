@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>効果音プレイヤー</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 80%;
+      max-width: 400px;
+    }
+    button {
+      background-color: #ff4fa3;
+      border: none;
+      border-radius: 12px;
+      padding: 20px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(255, 79, 163, 0.3);
+    }
+    button:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 5px rgba(255, 79, 163, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>カイジ企画</h1>
+  <div class="grid">
+    <button onclick="playSound(0)">ざわざわ普通</button>
+    <button onclick="playSound(1)">ざわざわショック</button>
+    <button onclick="playSound(2)">こいつら</button>
+    <button onclick="playSound(3)">押せ</button>
+    <button onclick="playSound(4)">何人死んだ</button>
+    <button onclick="playSound(5)">ライアーゲーム</button>
+    <button onclick="playSound(6)">ライアーゲーム定番</button>
+    <button onclick="playSound(7)">審判の日</button>
+    <button onclick="playSound(8)">作戦開始</button>
+    <button onclick="playSound(9)">心臓</button>
+  </div>
+
+  <script>
+    const sounds = [
+  new Audio('ざわざわ普通.wav'),
+  new Audio('ざわざわショック.wav'),
+  new Audio('こいつら.wav'),
+  new Audio('押せ.wav'),
+  new Audio('何人死んだ.wav'),
+  new Audio('ライアーゲーム.mp3'),
+  new Audio('ライアーゲーム定番.mp3'),
+  new Audio('審判の日.mp3'),
+  new Audio('作戦開始.mp3'),
+  new Audio('心臓.mp3')
+];
+
+    let currentSound = null;
+
+    function playSound(index) {
+      if (currentSound) {
+        currentSound.pause();
+        currentSound.currentTime = 0;
+      }
+      currentSound = sounds[index];
+      currentSound.play();
+    }
+  </script>
+</body>
+</html>
